@@ -47,6 +47,11 @@ def test_edit_reaction1(editor, example_model):
     assert reaction.upper_bound == 1000
     # assert reaction.gene_name_reaction_rule == '(b0001 and b0002) or b1010' this is failing !
 
+def test_edit_biomass_compound1():
+    # properly change coefficient
+    editor.edit_biomass_compound(example_model, 'ACALD', 'accoa_c', 2)
+    assert example_model.reactions.get_by_id('ACALD').get_coefficient('accoa_c') == 2
+
 
 def test_copy_model_reactions1():
     pass
